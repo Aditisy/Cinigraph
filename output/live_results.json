@@ -1,0 +1,308 @@
+[
+  {
+    "answer": "The Matrix was directed by Lana Wachowski [R1] and Lilly Wachowski [R2].",
+    "cypher": "MATCH (p:Person)-[:DIRECTED]->(m:Movie) WHERE toLower(m.title)=toLower($entity) RETURN m.title AS movie, p.name AS director ORDER BY director LIMIT $limit",
+    "elapsed_seconds": 2.98,
+    "evidence": [
+      {
+        "director": "Lana Wachowski",
+        "movie": "The Matrix",
+        "source": "R1"
+      },
+      {
+        "director": "Lilly Wachowski",
+        "movie": "The Matrix",
+        "source": "R2"
+      }
+    ],
+    "intent": "director",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "The Matrix",
+      "limit": 11
+    },
+    "question": "Who directed The Matrix?",
+    "truncated": false
+  },
+  {
+    "answer": "In The Matrix, the main cast includes Keanu Reeves as Neo, Laurence Fishburne as Morpheus, Carrie-Anne Moss as Trinity, Emil Eifrem as Emil, and Hugo Weaving as Agent Smith.",
+    "citation_warning": "The model omitted or misnumbered citations. Check the evidence table.",
+    "cypher": "MATCH (p:Person)-[r:ACTED_IN]->(m:Movie) WHERE toLower(m.title)=toLower($entity) RETURN m.title AS movie, p.name AS actor, r.roles AS roles ORDER BY actor LIMIT $limit",
+    "elapsed_seconds": 5.14,
+    "evidence": [
+      {
+        "actor": "Carrie-Anne Moss",
+        "movie": "The Matrix",
+        "roles": [
+          "Trinity"
+        ],
+        "source": "R1"
+      },
+      {
+        "actor": "Emil Eifrem",
+        "movie": "The Matrix",
+        "roles": [
+          "Emil"
+        ],
+        "source": "R2"
+      },
+      {
+        "actor": "Hugo Weaving",
+        "movie": "The Matrix",
+        "roles": [
+          "Agent Smith"
+        ],
+        "source": "R3"
+      },
+      {
+        "actor": "Keanu Reeves",
+        "movie": "The Matrix",
+        "roles": [
+          "Neo"
+        ],
+        "source": "R4"
+      },
+      {
+        "actor": "Laurence Fishburne",
+        "movie": "The Matrix",
+        "roles": [
+          "Morpheus"
+        ],
+        "source": "R5"
+      }
+    ],
+    "intent": "cast",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "The Matrix",
+      "limit": 11
+    },
+    "question": "Who acted in The Matrix?",
+    "truncated": false
+  },
+  {
+    "answer": "Partial results from the sample graph:\nMovies with Tom Hanks include:\n- Joe Versus the Volcano [R1] from 1990\n- A League of Their Own [R2] from 1992\n- Sleepless in Seattle [R3] from 1993\n- Apollo 13 [R4] from 1995\n- That Thing You Do [R5] from 1996\n- You've Got Mail [R6] from 1998\n- The Green Mile [R7] from 1999\n- Cast Away [R8] from 2000\n- The Polar Express [R9] from 2004\n- The Da Vinci Code [R10] from 2006",
+    "cypher": "MATCH (p:Person)-[:ACTED_IN]->(m:Movie) WHERE toLower(p.name)=toLower($entity) RETURN m.title AS movie, m.released AS year ORDER BY year, movie LIMIT $limit",
+    "elapsed_seconds": 14.67,
+    "evidence": [
+      {
+        "movie": "Joe Versus the Volcano",
+        "source": "R1",
+        "year": 1990
+      },
+      {
+        "movie": "A League of Their Own",
+        "source": "R2",
+        "year": 1992
+      },
+      {
+        "movie": "Sleepless in Seattle",
+        "source": "R3",
+        "year": 1993
+      },
+      {
+        "movie": "Apollo 13",
+        "source": "R4",
+        "year": 1995
+      },
+      {
+        "movie": "That Thing You Do",
+        "source": "R5",
+        "year": 1996
+      },
+      {
+        "movie": "You've Got Mail",
+        "source": "R6",
+        "year": 1998
+      },
+      {
+        "movie": "The Green Mile",
+        "source": "R7",
+        "year": 1999
+      },
+      {
+        "movie": "Cast Away",
+        "source": "R8",
+        "year": 2000
+      },
+      {
+        "movie": "The Polar Express",
+        "source": "R9",
+        "year": 2004
+      },
+      {
+        "movie": "The Da Vinci Code",
+        "source": "R10",
+        "year": 2006
+      }
+    ],
+    "intent": "actor_movies",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "Tom Hanks",
+      "limit": 11
+    },
+    "question": "Movies with Tom Hanks",
+    "truncated": true
+  },
+  {
+    "answer": "Based on the provided facts, Nora Ephron directed two movies: [R1] \"Sleepless in Seattle\" in 1993 and [R2] \"You've Got Mail\" in 1998. These films are notable for their romantic comedy themes and Ephron's signature style.",
+    "cypher": "MATCH (p:Person)-[:DIRECTED]->(m:Movie) WHERE toLower(p.name)=toLower($entity) RETURN m.title AS movie, m.released AS year ORDER BY year, movie LIMIT $limit",
+    "elapsed_seconds": 4.8,
+    "evidence": [
+      {
+        "movie": "Sleepless in Seattle",
+        "source": "R1",
+        "year": 1993
+      },
+      {
+        "movie": "You've Got Mail",
+        "source": "R2",
+        "year": 1998
+      }
+    ],
+    "intent": "director_movies",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "Nora Ephron",
+      "limit": 11
+    },
+    "question": "Movies directed by Nora Ephron",
+    "truncated": false
+  },
+  {
+    "answer": "The Matrix was released in 1999. [R1]",
+    "cypher": "MATCH (m:Movie) WHERE toLower(m.title)=toLower($entity) RETURN m.title AS movie, m.released AS year, m.tagline AS tagline LIMIT $limit",
+    "elapsed_seconds": 1.59,
+    "evidence": [
+      {
+        "movie": "The Matrix",
+        "source": "R1",
+        "tagline": "Welcome to the Real World",
+        "year": 1999
+      }
+    ],
+    "intent": "movie",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "The Matrix",
+      "limit": 11
+    },
+    "question": "When was The Matrix released?",
+    "truncated": false
+  },
+  {
+    "answer": "In this movie graph:\n- [R1] and [R2] both share actors Hugo Weaving, Laurence Fishburne, Carrie-Anne Moss, and Keanu Reeves, and have a score of 4.\n- [R4] and [R5] both share actor Keanu Reeves, and have a score of 1.\n- [R8] shares actor Hugo Weaving, and has a score of 1.",
+    "cypher": "MATCH (seed:Movie)<-[:ACTED_IN]-(p:Person)-[:ACTED_IN]->(m:Movie) WHERE toLower(seed.title)=toLower($entity) AND m<>seed WITH m, collect(DISTINCT p.name) AS shared_actors RETURN m.title AS movie, m.released AS year, shared_actors, size(shared_actors) AS score ORDER BY score DESC, movie LIMIT $limit",
+    "elapsed_seconds": 12.13,
+    "evidence": [
+      {
+        "movie": "The Matrix Reloaded",
+        "score": 4,
+        "shared_actors": [
+          "Hugo Weaving",
+          "Laurence Fishburne",
+          "Carrie-Anne Moss",
+          "Keanu Reeves"
+        ],
+        "source": "R1",
+        "year": 2003
+      },
+      {
+        "movie": "The Matrix Revolutions",
+        "score": 4,
+        "shared_actors": [
+          "Hugo Weaving",
+          "Laurence Fishburne",
+          "Carrie-Anne Moss",
+          "Keanu Reeves"
+        ],
+        "source": "R2",
+        "year": 2003
+      },
+      {
+        "movie": "Cloud Atlas",
+        "score": 1,
+        "shared_actors": [
+          "Hugo Weaving"
+        ],
+        "source": "R3",
+        "year": 2012
+      },
+      {
+        "movie": "Johnny Mnemonic",
+        "score": 1,
+        "shared_actors": [
+          "Keanu Reeves"
+        ],
+        "source": "R4",
+        "year": 1995
+      },
+      {
+        "movie": "Something's Gotta Give",
+        "score": 1,
+        "shared_actors": [
+          "Keanu Reeves"
+        ],
+        "source": "R5",
+        "year": 2003
+      },
+      {
+        "movie": "The Devil's Advocate",
+        "score": 1,
+        "shared_actors": [
+          "Keanu Reeves"
+        ],
+        "source": "R6",
+        "year": 1997
+      },
+      {
+        "movie": "The Replacements",
+        "score": 1,
+        "shared_actors": [
+          "Keanu Reeves"
+        ],
+        "source": "R7",
+        "year": 2000
+      },
+      {
+        "movie": "V for Vendetta",
+        "score": 1,
+        "shared_actors": [
+          "Hugo Weaving"
+        ],
+        "source": "R8",
+        "year": 2006
+      }
+    ],
+    "intent": "recommend",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "The Matrix",
+      "limit": 11
+    },
+    "question": "Recommend movies like The Matrix",
+    "truncated": false
+  },
+  {
+    "answer": "No matching evidence was found in the movie graph. Check the exact title or full person name.",
+    "cypher": "MATCH (m:Movie) WHERE toLower(m.title)=toLower($entity) RETURN m.title AS movie, m.released AS year, m.tagline AS tagline LIMIT $limit",
+    "elapsed_seconds": 0.06,
+    "evidence": [],
+    "intent": "movie",
+    "model": "Qwen2.5 3B - Q4_K_M",
+    "parameters": {
+      "entity": "__missing_movie__",
+      "limit": 11
+    },
+    "question": "Tell me about __missing_movie__",
+    "truncated": false
+  },
+  {
+    "question": "Who won an Oscar?",
+    "status": 400,
+    "response": {
+      "error": "Unsupported question. Try: Who directed The Matrix? | Who acted in The Matrix? | Movies with Tom Hanks | Movies directed by Nora Ephron | Tell me about Apollo 13 | Recommend movies like The Matrix"
+    }
+  }
+]

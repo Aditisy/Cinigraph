@@ -1,0 +1,8 @@
+{
+  "neo4j": "2026.09.0",
+  "llama_asset": "llama-b11443-bin-win-cpu-x64.zip",
+  "model": "Qwen2.5-3B-Instruct Q4_K_M",
+  "dataset": "https://github.com/neo4j-graph-examples/movies",
+  "dataset_sha256": "7be04aba2193790e0051308e6aa8550236e651cae652ea7da44b7dc01f4c4e69",
+  "model_source": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF"
+}

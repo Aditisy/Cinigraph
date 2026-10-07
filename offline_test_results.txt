@@ -1,0 +1,17 @@
+test_failure_preserves_evidence (test_app.PipelineTests.test_failure_preserves_evidence) ... ok
+test_llama_chat_api_uses_server_template (test_app.PipelineTests.test_llama_chat_api_uses_server_template) ... ok
+test_llm_request_contains_evidence (test_app.PipelineTests.test_llm_request_contains_evidence) ... ok
+test_no_evidence_skips_llm (test_app.PipelineTests.test_no_evidence_skips_llm) ... ok
+test_parameterization_and_read_routing (test_app.PipelineTests.test_parameterization_and_read_routing) ... ok
+test_supported_questions (test_app.PipelineTests.test_supported_questions) ... ok
+test_truncation (test_app.PipelineTests.test_truncation) ... ok
+test_unsupported_and_empty (test_app.PipelineTests.test_unsupported_and_empty) ... ok
+test_question_type_validation (test_web.WebTests.test_question_type_validation) ... ok
+test_rejects_cross_origin_generation (test_web.WebTests.test_rejects_cross_origin_generation) ... ok
+test_report_is_served (test_web.WebTests.test_report_is_served) ... ok
+test_unsupported_question (test_web.WebTests.test_unsupported_question) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.107s
+
+OK
