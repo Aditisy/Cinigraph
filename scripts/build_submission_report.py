@@ -134,6 +134,17 @@ if image.exists():
 p('Run locally at http://127.0.0.1:8765. Double-click Launch CineGraph.cmd to restart the database, model and web server. No paid LLM API key is required.')
 
 # Page 5.
+for filename, heading, caption in [
+ ('CineGraph_Collection.png', 'Website Screenshots - Movie Collection', 'Figure 2. Movie collection populated from the Neo4j Movies dataset, with title search and cast connection counts.'),
+ ('CineGraph_Graph.png', 'Website Screenshots - Knowledge Graph', 'Figure 3. The Matrix relationship view. Solid links represent actors; dashed links represent directors.')]:
+ page();h(heading)
+ from PIL import Image as PILImage
+ shot=ROOT/'output'/filename
+ iw,ih=PILImage.open(shot).size
+ scale=min(WIDTH/iw,590/ih)
+ story.append(Image(str(shot),width=iw*scale,height=ih*scale))
+ p(caption,'small')
+ p('Additional website screenshot captured on 8 October 2026.','small')
 page();h('Sample Input & Output')
 table([['Input','Component','Observed output'],
 ['Who directed The Matrix?','director','The Matrix was directed by Lana Wachowski [R1] and Lilly Wachowski [R2].'],

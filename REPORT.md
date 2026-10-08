@@ -133,6 +133,18 @@ Figure 1. Working frontend: a live director answer with its graph evidence (capt
 
 Run locally at http://127.0.0.1:8765. Double-click Launch CineGraph.cmd to restart the database, model and web server. No paid LLM API key is required.
 
+## Website Screenshots - Movie Collection
+
+Figure 2. Movie collection populated from the Neo4j Movies dataset, with title search and cast connection counts.
+
+Additional website screenshot captured on 8 October 2026.
+
+## Website Screenshots - Knowledge Graph
+
+Figure 3. The Matrix relationship view. Solid links represent actors; dashed links represent directors.
+
+Additional website screenshot captured on 8 October 2026.
+
 ## Sample Input & Output
 
 Input | Component | Observed output
